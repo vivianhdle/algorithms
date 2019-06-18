@@ -97,7 +97,6 @@ console.log('meanMode([1, 2, 3]) should return 0 and returns',meanMode([1, 2, 3]
 function dashInsert(str){
     let newStr=''
     for (let strIndex=0;strIndex<str.length;strIndex++){
-        debugger;
         let currentNum = parseInt(str[strIndex])
         let nextNum = parseInt(str[strIndex+1])
         if (currentNum%2!==0 && nextNum && nextNum%2!==0){
@@ -109,4 +108,234 @@ function dashInsert(str){
     return newStr
 }
 
-console.log('dashInsert("454793") should return 4547-9-3 and r', dashInsert("454793"));
+console.log('dashInsert("454793") should return 4547-9-3 and returns', dashInsert("454793"));
+//================================================================================================================================
+//================================================================================================================================
+
+function secondGreatLow(arr){
+    //start at index 1 and see if index 1 is greating than index 0, if not keep checking
+    //variable for startInd = 0
+    //variable for currentInd =
+    //same for the one at the end
+    //let results = [];
+    //keep running this check until results has 2...
+    let startIndex = 0;
+    let currentIndex = 1;
+    const results = [];
+    while (results.length===0){
+        if (arr[startIndex]<arr[currentIndex]){
+            results.push(arr[currentIndex])
+        } else {
+            currentIndex++
+        }
+    }
+
+    startIndex=arr.length-1;
+    currentIndex=arr.length-2
+    while (results.length===1){
+        if (arr[startIndex]>arr[currentIndex]){
+            results.push(arr[currentIndex]);
+        } else {
+            currentIndex--
+        }
+    }
+    return results.join(' ');
+}
+
+console.log("secondGreatLow([7, 7, 12, 98, 106]) should return 12 98 and it returnss",secondGreatLow([7, 7, 12, 98, 106]));
+console.log("secondGreatLow([12, 98]) should return  98 12 and it returnss",secondGreatLow([12, 98]));
+//================================================================================================================================
+//================================================================================================================================
+
+function swapCase(str){
+    //the letter is lowercase if... it is between a and z unicodes (so we can compare the letter codes)
+    let newStr = '';
+    for (let strIndex in str){
+        if (str[strIndex]>='a' && str[strIndex]<='z'){
+            newStr+=str[strIndex].toUpperCase();
+        } else {
+            newStr+=str[strIndex].toLowerCase();
+        }
+    }
+    return newStr;
+}
+
+console.log("swapCase('Sup DUDE!!?') should return sUP dude!!? and returns",swapCase('Sup DUDE!!?'));
+console.log("swapCase('Hello-LOL') should return hELLO-lol and returns",swapCase('Hello-LOL'));
+//================================================================================================================================
+//================================================================================================================================
+
+
+function numberSearch(str){
+    var pattern = /[0-9]+/gm;
+    const matches = str.match(pattern);
+    return matches.reduce((prev,curr)=>{
+        return parseInt(prev)+parseInt(curr);
+    });
+}
+console.log("numberSearch('55Hello') should return 55 and returns",numberSearch('55Hello'));
+console.log("numberSearch('88Hello 3World!') should return 91 and returns",numberSearch('88Hello 3World!'));
+
+//================================================================================================================================
+//================================================================================================================================
+
+function thirdGreatest(strArr){
+    //we need to know the length of all these words, maybe we can use a .sort? 
+    //.sort(a,b) --> return if a.length>b.length
+    const sortedArr = strArr.sort((a,b)=>{return a.length-b.length});
+    if (sortedArr[sortedArr.length-3].length === sortedArr[sortedArr.length-2].length){
+        if (sortedArr[sortedArr.length-1].length === sortedArr[sortedArr.length-2].length){
+            return sortedArr[sortedArr.length-1];
+        }else{
+            return sortedArr[sortedArr.length-2];
+        }
+    } else{
+        return sortedArr[sortedArr.length-3];
+    }
+}
+
+console.log('thirdGreatest(["hello", "world", "before", "all"]) should return "world" and returns', thirdGreatest(["hello", "world", "before", "all"]));
+console.log('thirdGreatest(["coder","byte","code"]) should return "code" and returns', thirdGreatest(["coder","byte","code"]));
+console.log('thirdGreatest(["abc","defg","z","hijk"]) should return "abc" and returns',thirdGreatest(["abc","defg","z","hijk"]));
+//================================================================================================================================
+//================================================================================================================================
+
+function powersOfTwo(num){
+    //will return true or false if it is a power of 2...
+    //it is a power if the square root is a whole number..
+    //a number is a whole number/int if it has no decimals praseInt === the normal?
+    if (Math.sqrt(num) === parseInt(Math.sqrt(num))){
+        return true;
+    }else{
+        return false;
+    }
+}
+console.log("powersOfTwo(4) should return true and returns",powersOfTwo(4));
+console.log("powersOfTwo(124) should return false and returns",powersOfTwo(124));
+//================================================================================================================================
+//================================================================================================================================
+
+function additivePersistence(num){
+    let numbers = num.toString();//2718,
+    let answer = 0;
+    let counter=0;
+    if (num.toString().length===1){
+        return 0;
+    }
+    while (answer.toString().length !== 1 || answer===0){
+        answer = 0;
+        for (let strIndex in numbers){
+            answer += parseInt(numbers[strIndex]);
+        }
+        numbers=answer.toString();
+        counter++
+    }
+    return counter;
+}
+console.log("additivePersistence(4) should return 0 and returns",additivePersistence(4));
+console.log("additivePersistence(2718) should return 2 and returns",additivePersistence(2718));
+
+//================================================================================================================================
+//================================================================================================================================
+
+function multiplicativePersistence(num){
+    let stringified = num.toString();
+    let multiplied = 1;
+    let counter = 0;
+    while (stringified.length !== 1){
+        for (let numIndex in stringified){
+            const currentNumber = parseInt(stringified[numIndex]);
+            multiplied *= currentNumber
+        }
+        stringified = multiplied.toString();
+        counter++
+        multiplied = 1;
+    }
+    return counter;
+}
+console.log("multiplicativePersistence(39) should return 3 and returns",multiplicativePersistence(39));
+
+//================================================================================================================================
+//================================================================================================================================
+
+function offLineMinimum(strArr){
+    let newArr = [];
+    let results = [];
+    for (let arrIndex=0;arrIndex<strArr.length;arrIndex++){
+        if (!isNaN(strArr[arrIndex])){
+            let currentNumber=parseInt(strArr[arrIndex])
+            newArr.push(currentNumber);
+        } else {
+            newArr.sort();
+            results.push(newArr.shift());
+        }
+    }
+    return results.join(',');
+}
+
+console.log('offLineMinimum(["1","2","E","E","3"]) should return "1,2" and returns',offLineMinimum(["1","2","E","E","3"]));
+console.log('offLineMinimum(["4","E","1","E","2","E","3","E"]) should return "4,1,2,3" and returns',offLineMinimum(["4","E","1","E","2","E","3","E"]));
+
+//================================================================================================================================
+//================================================================================================================================
+
+
+
+// Have the function ChangingSequence(arr) take the array of numbers stored in arr and return the index at which the numbers stop increasing and begin decreasing or stop decreasing and begin increasing. For example: if arr is [1, 2, 4, 6, 4, 3, 1] then your program should return 3 because 6 is the last point in the array where the numbers were increasing and the next number begins a decreasing sequence. The array will contain at least 3 numbers and it may contains only a single sequence, increasing or decreasing. If there is only a single sequence in the array, then your program should return -1. Indexing should begin with 0. 
+
+function changingSequence(arr){
+    let startIndex=0
+    if (arr[startIndex]>arr[startIndex+1]){
+        while(arr[startIndex]>arr[startIndex+1] && startIndex<arr.length){
+            startIndex++;
+        }
+    } else {
+        while(arr[startIndex]<arr[startIndex+1] && startIndex<arr.length){
+            startIndex++;
+        }
+    }
+    return startIndex === arr.length-1 ? -1:startIndex;
+}
+
+console.log('changingSequence([1, 2, 4, 6, 4, 3, 1]) should return 3 and returns',changingSequence([1, 2, 4, 6, 4, 3, 1]));
+console.log('changingSequence([-4, -2, 9, 10]) should return -1 and returns',changingSequence([-4, -2, 9, 10]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
