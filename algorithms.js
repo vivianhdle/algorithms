@@ -320,15 +320,66 @@ console.log("overlappingRanges([1,2,1,3,1]) should return true and returns",over
 //================================================================================================================================
 //================================================================================================================================
 
+function superIncreasing(arr){
+    let sum = 0;
+    for (let arrIndex=0;arrIndex<arr.length-1;arrIndex++){
+        sum += arr[arrIndex];
+        if (sum>=arr[arrIndex+1]){
+            return false
+        }
+    }
+    return true;
+}
+
+console.log('superIncreasing([1, 3, 6, 13, 54]) should return true and returns', superIncreasing([1, 3, 6, 13, 54]));
+console.log('superIncreasing([1,2,3,4]) should return false and returns', superIncreasing([1,2,3,4]));
+
+//================================================================================================================================
+//================================================================================================================================
+
+function hammingDistance(strArr){
+    let counter=0;
+    for (let strIndex=0;strIndex<strArr[1].length;strIndex++){
+        if (strArr[0][strIndex]!==strArr[1][strIndex]){
+            counter++
+        }
+    }
+    return counter;
+}
+console.log('hammingDistance(["coder", "codec"]) should return 1 and returns',hammingDistance(["coder", "codec"]));
+console.log('hammingDistance(["10011", "10100"]) should return 3 and returns',hammingDistance(["10011", "10100"]));
+
+//================================================================================================================================
+//================================================================================================================================
+
+function rectangleArea(strArr){
+    const pattern = /[0-9]/gmi
+    const newArr = strArr.map((item)=>{
+        return item.match(pattern);
+    })
+    const x = [];
+    const y = [];
+    newArr.forEach((item)=>{
+        if (!x.includes(item[0])){
+            x.push(item[0]);
+        }
+        if (!y.includes(item[1])){
+            y.push(item[1]);
+        }
+    })
+    if (x.length===0 || y.length===1){
+        return 0
+    }
+    return Math.abs(x[0]-x[1]) * Math.abs(y[0]-y[1]);
+}
+
+console.log('rectangleArea(["(1 1)","(1 3)","(3 1)","(3 3)"])',rectangleArea(["(1 1)","(1 3)","(3 1)","(3 3)"]));
+console.log('rectangleArea(["(0 0)","(1 0)","(1 1)","(0 1)"])',rectangleArea(["(0 0)","(1 0)","(1 1)","(0 1)"]));
+console.log('rectangleArea(["(0 0)","(0 0)","(0 0)","(0 0)"])',rectangleArea(["(0 0)","(0 0)","(0 0)","(0 0)"]));
 
 
-
-
-
-
-
-
-
+//================================================================================================================================
+//================================================================================================================================
 
 
 
