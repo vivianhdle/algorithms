@@ -279,10 +279,6 @@ console.log('offLineMinimum(["4","E","1","E","2","E","3","E"]) should return "4,
 //================================================================================================================================
 //================================================================================================================================
 
-
-
-// Have the function ChangingSequence(arr) take the array of numbers stored in arr and return the index at which the numbers stop increasing and begin decreasing or stop decreasing and begin increasing. For example: if arr is [1, 2, 4, 6, 4, 3, 1] then your program should return 3 because 6 is the last point in the array where the numbers were increasing and the next number begins a decreasing sequence. The array will contain at least 3 numbers and it may contains only a single sequence, increasing or decreasing. If there is only a single sequence in the array, then your program should return -1. Indexing should begin with 0. 
-
 function changingSequence(arr){
     let startIndex=0
     if (arr[startIndex]>arr[startIndex+1]){
@@ -299,9 +295,30 @@ function changingSequence(arr){
 
 console.log('changingSequence([1, 2, 4, 6, 4, 3, 1]) should return 3 and returns',changingSequence([1, 2, 4, 6, 4, 3, 1]));
 console.log('changingSequence([-4, -2, 9, 10]) should return -1 and returns',changingSequence([-4, -2, 9, 10]));
+//================================================================================================================================
+//================================================================================================================================
+function overlappingRanges(arr){
+    const range1 = [];
+    const range2 = [];
+    let counter = 0;
+    for (let arrIndex=arr[0];arrIndex<=arr[1];arrIndex++){
+        range1.push(arrIndex);
+    }
+    for (let arrIndex=arr[2];arrIndex<=arr[3];arrIndex++){
+        range2.push(arrIndex);
+    }
+    range2.forEach((number)=>{
+        range1.indexOf(number) !== -1 ? counter++:null
+    })
+    return counter >= arr[4]
+}
 
+console.log("overlappingRanges([4, 10, 2, 6, 3]) should return true and returns",overlappingRanges([4, 10, 2, 6, 3]));
+console.log("overlappingRanges([1,2,1,3,1]) should return true and returns",overlappingRanges([1,2,1,3,1]));
+console.log("overlappingRanges([1,2,1,3,1]) should return true and returns",overlappingRanges([1,2,1,3,1]));
 
-
+//================================================================================================================================
+//================================================================================================================================
 
 
 
