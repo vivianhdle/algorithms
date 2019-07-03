@@ -377,19 +377,104 @@ console.log('rectangleArea(["(1 1)","(1 3)","(3 1)","(3 3)"])',rectangleArea(["(
 console.log('rectangleArea(["(0 0)","(1 0)","(1 1)","(0 1)"])',rectangleArea(["(0 0)","(1 0)","(1 1)","(0 1)"]));
 console.log('rectangleArea(["(0 0)","(0 0)","(0 0)","(0 0)"])',rectangleArea(["(0 0)","(0 0)","(0 0)","(0 0)"]));
 
+//================================================================================================================================
+//================================================================================================================================
 
+function otherProducts(arr){
+    let currentIndex=0;
+    let result = [];
+    while (result.length !== arr.length){
+        let product = 1;
+        arr.forEach((number,index)=>{
+            if (currentIndex!==index){
+                product*=number;
+            }
+        })
+        result.push(product);
+        currentIndex++
+    }
+    return result.join('-');
+}
+
+console.log('otherProducts([1, 2, 3, 4, 5]) should return 120-60-40-30-24 and returns',otherProducts([1, 2, 3, 4, 5]));
+console.log('otherProducts([1,4,3]) should return 12-3-4 and returns',otherProducts([1,4,3]));
+console.log('otherProducts([3,1,2,6]) should return 12-36-18-6 and returns',otherProducts([3,1,2,6]));
 //================================================================================================================================
 //================================================================================================================================
 
 
+function arrayMatching(strArr){
+    let arrArray = [];
+    let results = [];
+    for (let arrIndex=0;arrIndex<strArr.length;arrIndex++){
+        arrArray.push(JSON.parse(strArr[arrIndex]));
+    }
+    let longerArray = arrArray[0].length > arrArray[1].length ? 0:1;
+    for (let arrIndex=0;arrIndex<arrArray[longerArray].length;arrIndex++){
+        const firstArrVal = arrArray[0][arrIndex];
+        const secondArrVal = arrArray[1][arrIndex];
+        if (firstArrVal && secondArrVal){
+            results.push(firstArrVal + secondArrVal)
+        } else {
+            results.push(arrArray[longerArray][arrIndex])
+        }
+    }
+    return results.join('-');
+}
+
+console.log('arrayMatching(["[1, 2, 5, 6]", "[5, 2, 8, 11]"]) should return 6-4-13-17 and returns', arrayMatching(["[1, 2, 5, 6]", "[5, 2, 8, 11]"]));
+console.log('arrayMatching(["[5, 2, 3]", "[2, 2, 3, 10, 6]"]) should return 7-4-5-10-6 and returns', arrayMatching(["[5, 2, 3]", "[2, 2, 3, 10, 6]"]));
 
 
 
+//================================================================================================================================
+//================================================================================================================================
 
+function longestIncreasing(arr){
+    let results = [arr[0]];
+    for (let index=1;index<arr.length;index++){
+        if (arr[index]>results[results.length-1]){
+            results.push(arr[index]);
+        }
+        for (let secIndex=0;secIndex<arr.length;secIndex++){
+            if (results[secIndex]>=arr[index]){
+                results[secIndex] = arr[index];
+                break;
+            }
+        }
+        
+    }
+    return results.length;
+}
 
+console.log('longestIncreasing([9,9,4,2]) should return 1 and returns',longestIncreasing([9,9,4,2]));
+console.log('longestIncreasing([10, 22, 9, 33, 21, 50, 41, 60, 22, 68, 90]) should return 7 and returns',longestIncreasing([10, 22, 9, 33, 21, 50, 41, 60, 22, 68, 90]));
+console.log('longestIncreasing([1, 2, 3, 7, 4, 5]) should return 5 and returns',longestIncreasing([1, 2, 3, 7, 4, 5]));
+console.log('longestIncreasing([4, 3, 5, 1, 6] ) should return 5 and returns',longestIncreasing([4, 3, 5, 1, 6]));
 
+//================================================================================================================================
+//================================================================================================================================
 
+function evenPairs(str){
+    const pattern = /[0-9]+/gmi;
+    const numbers = str.match(pattern)
+    if (numbers === null){
+        return false;
+    }
+    for (let numIndex=0;numIndex<numbers.length;numIndex++){
+        const num1 = numbers[numIndex].slice(0,1);
+        const num2 = numbers[numIndex].slice(1);
+        if (num1 && num2 && num1%2 === 0 && num2%2 === 0){
+            return true
+        }
+    }
+    return false;
+}
 
+console.log("evenPairs('7r5gg812') should return true and returns", evenPairs('7r5gg812'));
+console.log("evenPairs('f178svg3k19k46') should return true and returns", evenPairs('f178svg3k19k46'));
+console.log("evenPairs('f09r27i8e67') should return true and returns", evenPairs('f09r27i8e67'));
+console.log("evenPairs('abc') should return true and returns", evenPairs('abc'));
 
 
 
