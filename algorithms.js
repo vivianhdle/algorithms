@@ -462,10 +462,19 @@ function evenPairs(str){
         return false;
     }
     for (let numIndex=0;numIndex<numbers.length;numIndex++){
-        const num1 = numbers[numIndex].slice(0,1);
-        const num2 = numbers[numIndex].slice(1);
-        if (num1 && num2 && num1%2 === 0 && num2%2 === 0){
-            return true
+        const num2 = numbers[numIndex][numbers[numIndex].length-1];
+        let num1 = null
+        if (num2 && num2%2 === 0 && numbers[numIndex].length>1){
+            if (numbers[numIndex].length===2){
+                num1 = numbers[numIndex][0]
+                if (num1%2 ===0){
+                    return true
+                }
+            } else {
+                if (numbers[numIndex].slice(0,numbers[numIndex].length-1).search(/[02468]/gmi) !==-1){
+                    return true;
+                };
+            }
         }
     }
     return false;
@@ -477,17 +486,88 @@ console.log("evenPairs('f09r27i8e67') should return true and returns", evenPairs
 console.log("evenPairs('abc') should return true and returns", evenPairs('abc'));
 
 
+//================================================================================================================================
+//================================================================================================================================
 
+function nextPalindrome(num){
+    num++
+    while (num.toString() !== num.toString().split('').reverse().join('')){
+        num++
+    }
+    return num;
+}
 
+console.log('nextPalindrome(2) should return 3 and returns',nextPalindrome(2));
+console.log('nextPalindrome(180) should return 181 and returns',nextPalindrome(180));
+console.log('nextPalindrome(24) should return 33 and returns',nextPalindrome(24));
 
+//================================================================================================================================
+//================================================================================================================================
 
+function largestPair(num){
+    //turn number into string
+    //find largest number in the string
+    //largest number and next number are the largest pair
+    //if there are multiple large numbers, compare the number next to it
+    const numStr = num.toString();
+    let results = null;
+    let largestIndex = 0;
+    for (let index=1;index<numStr.length;index++){
+        const currentNum = numStr[index];
+        if (currentNum>numStr[largestIndex] && index !== numStr.length-1){
+            largestIndex = index;
+        } else if (currentNum === numStr[largestIndex]){
+            if (numStr[index+1]>numStr[largestIndex+1]){
+                largestIndex = index;
+            }
+        }
+    }
+    results = numStr[largestIndex] + numStr[largestIndex+1]
+    return parseInt(results);
+}
 
+console.log('largestPair(453857) should return 85 and returns',largestPair(453857));
+console.log('largestPair(363223311) should return 63 and returns',largestPair(363223311));
+console.log('largestPair(333223311) should return 33 and returns',largestPair(333223311));
 
+//================================================================================================================================
+//================================================================================================================================
 
+function nonRepeatingCharacters(str){
+    for (let strIndex=0;strIndex<str.length;strIndex++){
+        const remaining = str.substr(0,strIndex)+str.substr(strIndex+1);
+        const currentLetter = str[strIndex];
+        if (remaining.indexOf(currentLetter)===-1){
+            return currentLetter;
+        }
+    }
+}
 
+console.log("nonRepeatingCharacters('abcdef') should return a and returns",nonRepeatingCharacters('abcdef'));
+console.log("nonRepeatingCharacters('agettkgaeee') should return k and returns",nonRepeatingCharacters('agettkgaeee'));
+console.log("nonRepeatingCharacters('hello world hi hey') should return w and returns",nonRepeatingCharacters('hello world hi hey'));
 
+//================================================================================================================================
+//================================================================================================================================
 
+function twoSums(arr){
+    const target = arr.shift();
+    const table = {};
+    const answer = [];
+    for ( let arrIndex = 0; arrIndex < arr.length; arrIndex++){
+        const currentNum = arr[arrIndex];
+        const diff = target - currentNum
+        if (table.hasOwnProperty(diff)){
+            answer.push([diff,currentNum])
+        }
+        table[arr[arrIndex]] = null;
+    }
+    return answer.length ? answer.join(' '):-1;
+}
 
+console.log('twoSums([7, 3, 5, 2, -4, 8, 11]) should return [[5,2],[-4,11]] and returns',twoSums([7, 3, 5, 2, -4, 8, 11]));
+console.log('twoSums([8, -5, 4, 2, 7, -6, 4]) should return -1 and returns 4,4 and returns',twoSums([8, -5, 4, 2, 7, -6, 4]));
+console.log('twoSums([17, 4, 5, 6, 10, 11, 4, -3, -5, 3, 15, 2, 7]) should return 6,11 10,7 15,2 and returns',twoSums([17, 4, 5, 6, 10, 11, 4, -3, -5, 3, 15, 2, 7]));
 
 
 
