@@ -21,5 +21,18 @@ function plusOne(arr){
 
 console.log('plusOne([1,2,3])=[1,2,4] and returns',plusOne([1,2,3]));
 console.log('plusOne([1,2,9])=[1,3,0] and returns',plusOne([1,2,9]));
-console.log('plusOne([1,2,9])=[1,3,0] and returns',plusOne([9,9,9]));
-console.log('plusOne([1,2,9])=[1,3,0] and returns',plusOne([8,9,9]));
+console.log('plusOne([9,9,9])=[1,0,0,0] and returns',plusOne([9,9,9]));
+console.log('plusOne([8,9,9])=[9,0,0] and returns',plusOne([8,9,9]));
+
+function fibonacciSequence(num){
+    const fib = [0,1];
+    for (let index=fib.length-1;index<=num;index++){
+        const lastNum = fib[index];
+        const prevNum = fib[index-1];
+        fib.push(lastNum+prevNum);
+    }
+    return fib[num];
+}
+console.log('fibonacciSequence(4)=3 and returns',fibonacciSequence(4));
+console.log('fibonacciSequence(5)=5 and returns',fibonacciSequence(5));
+console.log('fibonacciSequence(10)=55 and returns',fibonacciSequence(10));
