@@ -40,5 +40,6 @@ console.log('fibonacciSequence(10)=55 and returns',fibonacciSequence(10));
 function removeVowels(str){
     return str.replace(/[aeiou]/gmi,'');
 }
-
 console.log("removeVowels('Hey how are you')='Hy hw r y' and returns",removeVowels('Hey how are you'));
+//=========================================================================================================================
+//=========================================================================================================================
