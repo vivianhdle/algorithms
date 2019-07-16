@@ -37,9 +37,19 @@ class LinkedList{
             if (checking.value === targetValue){
                 looking = false;
                 return checking;
+            } else if (checking.next === null){
+                return null;
             } else {
                 checking = checking.next;
             }
+        }
+    }
+    deleteNode(targetValue){
+        let found = this.searchNode(targetValue);
+        if (found === null) {
+            return 'Node not found'
+        } else {
+
         }
     }
 }
