@@ -43,3 +43,13 @@ function removeVowels(str){
 console.log("removeVowels('Hey how are you')='Hy hw r y' and returns",removeVowels('Hey how are you'));
 //=========================================================================================================================
 //=========================================================================================================================
+//implement factorial with recursion
+function factorial(num){
+    if (num>1){
+        return num*factorial(--num);
+    } else {
+        return 1;
+    }
+}
+
+console.log(factorial(6));
