@@ -15,4 +15,6 @@ function populateBST(arr){
     return node;
 }
 
-console.log(populateBST(test));
+const BST = populateBST(test);
+
+console.log(BST);

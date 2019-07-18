@@ -52,12 +52,36 @@ class LinkedList{
 
         }
     }
+    deleteDuplicates(){
+        const current = this.head
+        let deletedValue = null
+        let end = false;
+        while (!end){
+            while(current.value === current.next.value){
+                //delete those two nodes
+                //keep the deleted value
+                //if those nodes are in the beginning, reset the head
+                //if they are at the end, reset the tail
+                if(current === this.head){
+
+                } else if (current === this.tail){
+                    
+                }
+            }
+            if (current.next === null){
+                end = true;
+            }
+        }
+    }
 }
 
 
 const linkedList = new LinkedList()
-linkedList.insertNode(5);
-linkedList.insertNode(7);
-linkedList.insertNode(9);
+linkedList.insertNode(1);
+linkedList.insertNode(1);
+linkedList.insertNode(2);
+linkedList.insertNode(3);
+linkedList.insertNode(3);
+linkedList.insertNode(4);
 console.log(linkedList);
 console.log(linkedList.searchNode(9));
