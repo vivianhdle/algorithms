@@ -75,3 +75,21 @@ console.log('searchInsert([1,3,5,6],7)=4 and returns',searchInsert([1,3,5,6],7))
 
 //=========================================================================================================================
 //=========================================================================================================================
+
+
+function maxSubArray(arr){
+    debugger;
+    if (arr.length === 1 ){return arr}
+    const subarray = [arr.shift()];
+    let max = arr.reduce((currentMax,currentValue,index)=>{
+        if (currentValue + subarray[index] > currentValue){
+            subarray[index+1] = currentValue + subarray[index];
+        } else {
+            subarray[index+1] = currentValue;
+        }
+        return subarray[index+1] > currentMax ? subarray[index+1] : currentMax;
+    },subarray[0]);
+    return max;
+}
+
+console.log('maxSubArray([[-2,1,-3,4,-1,2,1,-5,4]])=6 and returns',maxSubArray([-2,1,-3,4,-1,2,1,-5,4]));
