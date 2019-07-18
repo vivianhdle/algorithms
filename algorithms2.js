@@ -51,5 +51,27 @@ function factorial(num){
         return 1;
     }
 }
+console.log('factorial(6)=720 and returns',factorial(6));
 
-console.log(factorial(6));
+//=========================================================================================================================
+//=========================================================================================================================
+
+function searchInsert(arr,target){
+    if (arr.includes(target)){
+        return arr.indexOf(target);
+    } else {
+        for (let arrInd=0;arrInd<arr.length;arrInd++){
+            const currentNum = arr[arrInd];
+            if (target<currentNum){
+                return arrInd;
+            }
+        }
+        return arr.length;
+    }
+}
+console.log('searchInsert([1,3,5,6],5)=2 and returns',searchInsert([1,3,5,6],5));
+console.log('searchInsert([1,3,5,6],2)=1 and returns',searchInsert([1,3,5,6],2));
+console.log('searchInsert([1,3,5,6],7)=4 and returns',searchInsert([1,3,5,6],7));
+
+//=========================================================================================================================
+//=========================================================================================================================
