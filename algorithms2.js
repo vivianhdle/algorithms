@@ -78,7 +78,6 @@ console.log('searchInsert([1,3,5,6],7)=4 and returns',searchInsert([1,3,5,6],7))
 
 
 function maxSubArray(arr){
-    debugger;
     if (arr.length === 1 ){return arr}
     const subarray = [arr.shift()];
     let max = arr.reduce((currentMax,currentValue,index)=>{
@@ -93,3 +92,36 @@ function maxSubArray(arr){
 }
 
 console.log('maxSubArray([[-2,1,-3,4,-1,2,1,-5,4]])=6 and returns',maxSubArray([-2,1,-3,4,-1,2,1,-5,4]));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+function plus1(arr){
+    let lastIndex=arr.length-1;
+    while (arr[lastIndex] === 9 && lastIndex!==0){
+        arr[lastIndex] = 0
+        lastIndex--
+    }
+    if (arr[lastIndex] === 9){
+        arr[lastIndex] = 0
+        arr.unshift(1);
+    } else {
+        arr[lastIndex]++;
+    }
+    return arr;
+}
+
+console.log('plus1([9,9])=[1,0,0] and returns',plus1([9,9]));
+
+//=========================================================================================================================
+//=========================================================================================================================
+function climbingStairs(steps){
+    let pattern = [0,1,2];
+    for (let start=pattern.length-1;start<steps;start++){
+        pattern.push(pattern[start]+pattern[start-1])
+    }
+    return pattern[steps];
+}
+console.log('climbingStairs(4)=5 and returns',climbingStairs(4));
+console.log('climbingStairs(7)=21 and returns',climbingStairs(7));
+
