@@ -115,6 +115,7 @@ console.log('plus1([9,9])=[1,0,0] and returns',plus1([9,9]));
 
 //=========================================================================================================================
 //=========================================================================================================================
+
 function climbingStairs(steps){
     let pattern = [0,1,2];
     for (let start=pattern.length-1;start<steps;start++){
@@ -124,4 +125,27 @@ function climbingStairs(steps){
 }
 console.log('climbingStairs(4)=5 and returns',climbingStairs(4));
 console.log('climbingStairs(7)=21 and returns',climbingStairs(7));
+console.log('climbingStairs(7)=21 and returns',climbingStairs(10));
 
+//=========================================================================================================================
+//=========================================================================================================================
+
+function removeAllDuplicates(head){
+    if (!head){
+        return null;
+    }
+    if (!head.next){
+        return head;
+    }
+    const runner = head.next;
+    let count = 0;
+    while(runner && runner.val === head.val){
+        runner = runner.next;
+        count ++
+    }
+    const post = removeAllDuplicates(runner);
+    if (count>0){
+        return post;
+    }
+    return head;
+}
