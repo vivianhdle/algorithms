@@ -149,3 +149,19 @@ function removeAllDuplicates(head){
     }
     return head;
 }
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+
+function isSameTree(tree1,tree2){
+    if (tree1== null && tree2 == null){return true};
+    if (tree1 == null || tree2 == null){return false};
+    if (tree1.val === tree2.val){
+        return isSameTree(tree1.left,tree2.left) && isSameTree(tree1.right,tree2.right)
+    } else {
+        return false
+    }
+    return true
+}
+
