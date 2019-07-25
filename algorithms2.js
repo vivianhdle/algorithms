@@ -230,6 +230,7 @@ console.log('happyNumber(19)=true and returns',happyNumber(19));
 
 //=========================================================================================================================
 //=========================================================================================================================
+
 //repeatedly add digits until digits has 1 number;
 
 function addDigits(num){
@@ -245,4 +246,21 @@ function addDigits(num){
     return num
 }
 
-console.log(addDigits(38));
+console.log('addDigits(38)=2 and returns',addDigits(38));
+
+//=========================================================================================================================
+//=========================================================================================================================
+//given an array, you can only rob houses non-adjacent to eachother, figure out which path is more lucrative
+function rob(arr){
+    let dp = [arr[0],Math.max(arr[0],arr[1])];
+    for (let ind=2;ind<arr.length;ind++){
+        dp[ind] = Math.max((dp[ind-2]+arr[ind]),dp[ind-1]);
+    }
+    return dp[dp.length-1];
+}
+console.log('rob([1,2,3,1])=4 and returns',rob([1,2,3,1]));
+console.log('rob([2,7,9,3,1])=12 and returns',rob([2,7,9,3,1]));
+console.log('rob([9,7,9,15,1])=24 and returns',rob([9,7,9,15,1]));
+//=========================================================================================================================
+//=========================================================================================================================
+
