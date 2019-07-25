@@ -264,3 +264,19 @@ console.log('rob([9,7,9,15,1])=24 and returns',rob([9,7,9,15,1]));
 //=========================================================================================================================
 //=========================================================================================================================
 
+//takes in an array of numbers and determines if there are duplicates in the array
+function containsDuplicates(arr){
+    let map = {};
+    for (let arrIndex in arr){
+        const currentNum = arr[arrIndex];
+        if (map.hasOwnProperty(currentNum)){
+            return true
+        } else {
+            map[currentNum]=null
+        }
+    }
+    return false;
+}
+
+console.log('containsDuplicates([1,2,3,1])=true and returns',containsDuplicates([1,2,3,1]));
+console.log('containsDuplicates([1,2,3,4])=false and returns',containsDuplicates([1,2,3,4]));
