@@ -185,3 +185,19 @@ function singleNumber(arr){
 console.log('singleNumber([1,1,2,5,5])=2 and returns',singleNumber([1,1,2,5,5]));
 console.log('singleNumber([2,2,7,7,10])=10 and returns',singleNumber([2,2,7,7,10]));
 console.log('singleNumber([3,2,5,2,5])=3 and returns',singleNumber([3,2,5,2,5]));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+//takes in a str and reverses all the vowels
+function reverseVowels(str){
+    const pattern = /[aeiou]/gmi;
+    const foundVowels = str.match(pattern);
+    return str.replace(pattern,()=>{return foundVowels.pop()});
+}
+
+console.log('reverseVowels("hello")=holle and returns',reverseVowels("hello"));
+console.log('reverseVowels("josh billy")=jish bolly and returns',reverseVowels("josh billy"));
+
+//=========================================================================================================================
+//=========================================================================================================================
