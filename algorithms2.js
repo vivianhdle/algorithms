@@ -201,3 +201,48 @@ console.log('reverseVowels("josh billy")=jish bolly and returns',reverseVowels("
 
 //=========================================================================================================================
 //=========================================================================================================================
+
+//takes in a number, determine if the number is happy
+//a happy number will keep repeating and squaring the digits until it equals 1;
+function happyNumber(num){
+    num = num.toString();
+    const seen = {};
+    while (true) {
+        let sum = 0;
+        for (let numIndex in num){
+            const currentNumber = num[numIndex]
+            sum+=currentNumber*currentNumber;
+        }
+        if (seen[sum]){
+            return false;
+        } else {
+            seen[sum] = null ;
+        }
+        if (sum===1){
+            return true
+        } else {
+            num = sum.toString();
+        }
+    }
+}
+
+console.log('happyNumber(19)=true and returns',happyNumber(19));
+
+//=========================================================================================================================
+//=========================================================================================================================
+//repeatedly add digits until digits has 1 number;
+
+function addDigits(num){
+    num=num.toString();
+    while(num.length>1){
+        let sum = 0;
+        for (let numIndex in num){
+            const currentNum = parseInt(num[numIndex]);
+            sum+=currentNum;
+        }
+        num=sum.toString();
+    }
+    return num
+}
+
+console.log(addDigits(38));
