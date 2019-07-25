@@ -224,7 +224,25 @@ function happyNumber(num){
             num = sum.toString();
         }
     }
-    return false;
 }
 
 console.log('happyNumber(19)=true and returns',happyNumber(19));
+
+//=========================================================================================================================
+//=========================================================================================================================
+//repeatedly add digits until digits has 1 number;
+
+function addDigits(num){
+    num=num.toString();
+    while(num.length>1){
+        let sum = 0;
+        for (let numIndex in num){
+            const currentNum = parseInt(num[numIndex]);
+            sum+=currentNum;
+        }
+        num=sum.toString();
+    }
+    return num
+}
+
+console.log(addDigits(38));
