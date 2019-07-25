@@ -165,3 +165,23 @@ function isSameTree(tree1,tree2){
     return true
 }
 
+//=========================================================================================================================
+//=========================================================================================================================
+
+//takes in a non-empty array of integers and every element appears twice accept for one, find that single one.
+function singleNumber(arr){
+    let current = arr.shift();
+    while(arr.length>0){
+        if (arr.includes(current)){
+            arr.splice(arr.indexOf(current),1);
+            current=arr.shift();
+        }else{
+            return current;
+        }
+    }
+    return current;
+}
+
+console.log('singleNumber([1,1,2,5,5])=2 and returns',singleNumber([1,1,2,5,5]));
+console.log('singleNumber([2,2,7,7,10])=10 and returns',singleNumber([2,2,7,7,10]));
+console.log('singleNumber([3,2,5,2,5])=3 and returns',singleNumber([3,2,5,2,5]));
