@@ -264,3 +264,61 @@ console.log('rob([9,7,9,15,1])=24 and returns',rob([9,7,9,15,1]));
 //=========================================================================================================================
 //=========================================================================================================================
 
+//takes in an array of numbers and determines if there are duplicates in the array
+function containsDuplicates(arr){
+    let map = {};
+    for (let arrIndex in arr){
+        const currentNum = arr[arrIndex];
+        if (map.hasOwnProperty(currentNum)){
+            return true
+        } else {
+            map[currentNum]=null
+        }
+    }
+    return false;
+}
+
+console.log('containsDuplicates([1,2,3,1])=true and returns',containsDuplicates([1,2,3,1]));
+console.log('containsDuplicates([1,2,3,4])=false and returns',containsDuplicates([1,2,3,4]));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+//takes in an array of numbers, finds the duplicate's index and subtracts them and makes sure they're less than k
+function containsNearbyDuplicate(arr,max){
+    let answer=false;
+    let map = {};
+    for (let arrIndex in arr){
+        const currentNumber = arr[arrIndex];
+        if (map.hasOwnProperty(currentNumber)){
+            if (Math.abs(parseInt(map[currentNumber]) - parseInt(arrIndex)) <= max){
+                answer = true
+            } else {
+                map[currentNumber] = arrIndex;
+            }
+        } else {
+            map[currentNumber]=arrIndex
+        }
+    }
+    return answer;
+}
+
+console.log('containsNearbyDuplicate([1,2,3,1],3)=true and returns',containsNearbyDuplicate([1,2,3,1],3));
+console.log('containsNearbyDuplicate([1,0,1,1],1)=true and returns',containsNearbyDuplicate([1,0,1,1],1));
+console.log('containsNearbyDuplicate([1,2,3,1,2,3],2)=false and returns',containsNearbyDuplicate([1,2,3,1,2,3],2));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+
+var reverseWords = function(s) {
+    const strSplit = s.split(' ');
+    let answer = strSplit.map((item)=>{
+        let newStr = '';
+        for (let i=item.length-1;i>=0;i--){
+            newStr+= item[i];
+        }
+        return newStr
+    })    
+    return answer.join(' ');
+}
