@@ -322,3 +322,22 @@ var reverseWords = function(s) {
     })    
     return answer.join(' ');
 }
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+function missingNumber(arr){
+    if (arr.length === 1){
+        if (arr.includes(0)){
+            return 1
+        } else {
+            return 0
+        }
+    }
+    for (let arrIndex=0; arrIndex<arr.length; arrIndex++){
+        if (!arr.includes(arrIndex)){
+            return arrIndex
+        }
+    }
+    return arr.length;
+}
