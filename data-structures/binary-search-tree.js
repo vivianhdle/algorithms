@@ -18,3 +18,23 @@ function populateBST(arr){
 const BST = populateBST(test);
 
 console.log(BST);
+
+
+
+
+
+
+
+function makeBTS(arr){
+    let middleIndex = Math.floor(arr.length/2);
+    const node = {
+        value:arr[middleIndex],
+        left:null,
+        right:null
+    }
+    if (arr.length>1){
+        node["left"] = makeBTS(arr.slice(0,middleIndex));
+        node["right"] = makeBTS(arr.slice(middleIndex+1))
+    }
+    return node;
+}
