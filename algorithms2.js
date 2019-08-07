@@ -341,3 +341,22 @@ function missingNumber(arr){
     }
     return arr.length;
 }
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+function maxProductSubArray(arr){
+    const dp = [arr.shift()];
+    const answer = arr.reduce((currentMax,num,index)=>{
+        if (dp[index]*arr[index]>dp[index]){
+            dp.push(dp[index]*arr[index]);
+        } else {
+            dp.push(arr[index])
+        }
+        return currentMax > dp[index+1] ? currentMax : dp[index+1];
+    },dp[0])
+    return answer;
+}
+
+console.log('maxProductSubArray([2,3,-2,4])=6 and returns',maxProductSubArray([2,3,-2,4]));
+console.log('maxProductSubArray([-2,0,-1])=0 and returns',maxProductSubArray([-2,0,-1]));
