@@ -360,3 +360,28 @@ function maxProductSubArray(arr){
 
 console.log('maxProductSubArray([2,3,-2,4])=6 and returns',maxProductSubArray([2,3,-2,4]));
 console.log('maxProductSubArray([-2,0,-1])=0 and returns',maxProductSubArray([-2,0,-1]));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+function robber(arr){
+    if (arr.length===0){
+        return 0;
+    }
+    const dp = [arr.shift()];
+    if (arr.length===0){
+        return dp[0];
+    }
+    dp.push(Math.max(dp[0],arr.shift()));
+    arr.forEach((currentVal,index)=>{
+        if (arr[index]+dp[index]>dp[index+1]){
+            dp.push(arr[index]+dp[index]);
+        } else {
+            dp.push(dp[index+1]);
+        }
+    });
+    return dp[dp.length-1];
+}
+
+console.log('robber([1,2,3,1])=4 and returns', robber([1,2,3,1]));
+console.log('robber([2,7,9,3,1])=12 and returns', robber([2,7,9,3,1]));
