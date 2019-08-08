@@ -385,3 +385,19 @@ function robber(arr){
 
 console.log('robber([1,2,3,1])=4 and returns', robber([1,2,3,1]));
 console.log('robber([2,7,9,3,1])=12 and returns', robber([2,7,9,3,1]));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+function powerOfTwo(num){
+    let inc = 1 ;
+    while (true){
+        if (inc<num){
+            inc*=2;
+        } else if(int>num){
+            return false;
+        } else{
+            return true;
+        }
+    }
+}
