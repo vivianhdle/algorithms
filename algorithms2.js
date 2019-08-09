@@ -426,14 +426,51 @@ console.log("validAnagram('anagram','nagaram')=true and returns",validAnagram('a
 //=========================================================================================================================
 
 var moveZeroes = function(nums) {
+    let checked = 0;
     for ( let numInd=0; numInd<nums.length;numInd++){
         let currentNum = nums[numInd];
         if (currentNum === 0){
-            nums.push(nums.splice(numInd,1));
+            nums.push(nums.splice(numInd,1)[0]);
             numInd--;
         }
+        checked++
+        if (checked === nums.length){
+            return nums;
+        }
     }
-    return nums;
 };
 
-console.log('moveZeros([0,1,0,3,12]) = [1,3,12,0,0] and returns',moveZeros([0,1,0,3,12]));
+console.log('moveZeros([0,1,0,3,12]) = [1,3,12,0,0] and returns',moveZeroes([0,1,0,3,12]));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+function wordPattern(pattern,str){
+    let map = {
+        
+    }
+    let wordMap = {
+
+    }
+    const splitWords = str.split(' ');
+    if (splitWords.length!==pattern.length){
+        return false;
+    }
+    for (let arrInd = 0; arrInd < splitWords.length; arrInd++){
+        const currentWord = splitWords[arrInd];
+        const currentLetter = pattern[arrInd];
+        if (!map.hasOwnProperty(currentLetter) && !wordMap.hasOwnProperty(currentWord)){
+            map[currentLetter] = currentWord;
+            wordMap[currentWord] = null;
+        } 
+        if (map[currentLetter] !== currentWord){
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log('wordPattern("abba","dog cat cat fish")= false and returns',wordPattern("abba","dog cat cat fish"));
+console.log('wordPattern("abba","dog dog dog dog") = false and returns',wordPattern("abba","dog dog dog dog"));
+console.log('wordPattern("abba","dog cat cat dog") = true and returns',wordPattern("abba","dog cat cat dog"));
+console.log('wordPattern("abba","dog cat cat dog") = true and returns',wordPattern("jquery","jquery"));
