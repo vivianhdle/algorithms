@@ -474,3 +474,26 @@ console.log('wordPattern("abba","dog cat cat fish")= false and returns',wordPatt
 console.log('wordPattern("abba","dog dog dog dog") = false and returns',wordPattern("abba","dog dog dog dog"));
 console.log('wordPattern("abba","dog cat cat dog") = true and returns',wordPattern("abba","dog cat cat dog"));
 console.log('wordPattern("abba","dog cat cat dog") = true and returns',wordPattern("jquery","jquery"));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+function removeMoreThan2Duplicates(arr){
+    let comparedNum = arr[0];
+    let count = 1;
+    for (let arrInd=1;arrInd<arr.length;arrInd++){
+        const currentNum = arr[arrInd];
+        if (comparedNum === currentNum){
+            if (count>=2){
+                arr.splice(arrInd,1);
+                arrInd--;
+            }
+            count++
+        } else {
+            comparedNum = currentNum;
+            count=1;
+        }
+    }
+    return arr.length;
+}
+console.log("removeMoreThan2Duplicates([1,1,1,2,2,3])=5 and returns",removeMoreThan2Duplicates([1,1,1,2,2,3]));
