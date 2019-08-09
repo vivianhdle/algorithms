@@ -401,3 +401,23 @@ function powerOfTwo(num){
         }
     }
 }
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+
+function validAnagram(str1,str2){
+    if (str1.length !== str2.length){
+        return false;
+    }
+    for (let strIndex=0; strIndex<str2.length; strIndex++){
+        let currentLetter = str2[strIndex];
+        if (str1.includes(str2[strIndex])){
+            str1 = str1.substr(0,str1.indexOf(currentLetter))+str1.substr(str1.indexOf(currentLetter)+1);
+        }
+    }
+    return str1 ? false:true;
+}
+
+console.log("validAnagram('rat','car')=false and returns",validAnagram('rat','car'));
+console.log("validAnagram('anagram','nagaram')=true and returns",validAnagram('anagram','nagaram'));
