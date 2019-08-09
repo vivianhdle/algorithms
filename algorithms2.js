@@ -421,3 +421,19 @@ function validAnagram(str1,str2){
 
 console.log("validAnagram('rat','car')=false and returns",validAnagram('rat','car'));
 console.log("validAnagram('anagram','nagaram')=true and returns",validAnagram('anagram','nagaram'));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+var moveZeroes = function(nums) {
+    for ( let numInd=0; numInd<nums.length;numInd++){
+        let currentNum = nums[numInd];
+        if (currentNum === 0){
+            nums.push(nums.splice(numInd,1));
+            numInd--;
+        }
+    }
+    return nums;
+};
+
+console.log('moveZeros([0,1,0,3,12]) = [1,3,12,0,0] and returns',moveZeros([0,1,0,3,12]));
