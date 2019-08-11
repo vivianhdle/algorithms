@@ -1,4 +1,6 @@
 var test = [1,3,4,6,7,8,10,13];
+var test1 = [4,3,4,6,3,8,8,14,13];
+var test2 = [25,3,14,6,7,8,5,13,23];
 
 
 function mergeSort(arr){
@@ -20,3 +22,5 @@ function mergeSort(arr){
 }
 
 console.log(mergeSort(test));
+console.log(mergeSort(test1));
+console.log(mergeSort(test2));
