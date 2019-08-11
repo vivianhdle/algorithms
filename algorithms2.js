@@ -497,3 +497,23 @@ function removeMoreThan2Duplicates(arr){
     return arr.length;
 }
 console.log("removeMoreThan2Duplicates([1,1,1,2,2,3])=5 and returns",removeMoreThan2Duplicates([1,1,1,2,2,3]));
+
+
+function mergeSortedArrays(nums1,m,nums2,n){
+    let arrInd = 0;
+    while (nums2.length>0){
+        if (nums1[arrInd]>nums2[0] || nums1.length === 0){
+            if (arrInd === 0){
+                nums1.unshift(nums2.shift());
+            } else {
+                nums1.splice(arrInd,1,nums2.shift());
+            }
+        } else{
+            nums1.splice(arrInd+1,0,nums2.shift());
+        }
+        nums1.pop();
+    }
+    return nums1
+}
+
+console.log(mergeSortedArrays([1,2,3,0,0,0],3,[2,5,6],3))
