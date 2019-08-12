@@ -497,6 +497,8 @@ function removeMoreThan2Duplicates(arr){
     return arr.length;
 }
 console.log("removeMoreThan2Duplicates([1,1,1,2,2,3])=5 and returns",removeMoreThan2Duplicates([1,1,1,2,2,3]));
+//=========================================================================================================================
+//=========================================================================================================================
 
 
 function mergeSortedArrays(nums1,m,nums2,n){
@@ -516,4 +518,29 @@ function mergeSortedArrays(nums1,m,nums2,n){
     return nums1
 }
 
-console.log(mergeSortedArrays([1,2,3,0,0,0],3,[2,5,6],3))
+console.log(mergeSortedArrays([1,2,3,0,0,0],3,[2,5,6],3));
+//=========================================================================================================================
+//=========================================================================================================================
+
+function pascalsTriangle(numRows){
+    if (numRows === 0){
+        return [];
+    }
+    const triangle = [[1]];
+    for (let triRow = 1; triRow<numRows; triRow++){
+        const triRowArr = [1,1];
+        if (triRowArr.length === triRow+1){
+            triangle.push(triRowArr);
+        } else {
+            const lastArr = triangle[triangle.length-1];
+            for (let start=0;start<lastArr.length-1;start++){
+                const add = lastArr[start] + lastArr[start+1];
+                triRowArr.splice(start+1,0,add);   
+            }
+            triangle.push(triRowArr);
+        }
+    }
+    return triangle
+}
+
+console.log('pascalsTriangle(5)=[[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]] and returns',pascalsTriangle(5));
