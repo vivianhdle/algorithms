@@ -41,3 +41,16 @@ function firstUniqChar(s){
 
 console.log('firstUniqChar("leetcode")=0 and returns',firstUniqChar("leetcode"));
 console.log('firstUniqChar("loveleetcode")=2 and returns',firstUniqChar("loveleetcode"));
+
+//=========================================================================================================================
+//=========================================================================================================================
+
+var isSubsequence = function(s, t) {
+    for (let strInd=0; strInd < t.length; strInd++){
+        let currentLetter = t[strInd];
+        if (s[0] === currentLetter){
+            s = s.substr(1);
+        }
+    }
+    return s === ''
+};
