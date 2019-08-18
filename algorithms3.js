@@ -54,3 +54,16 @@ var isSubsequence = function(s, t) {
     }
     return s === ''
 };
+
+//=========================================================================================================================
+//=========================================================================================================================
+//function will remove duplicates in strings and will output the final str
+
+var removeDuplicates = function(s) {
+    for (let strInd=0;strInd<s.length;strInd++){
+        let currentLetter = s[strInd];
+        if (currentletter === s[strInd+1]){
+            s = s.substr(0,strInd) + s.substr(strInd+2);
+        }
+    }
+};
