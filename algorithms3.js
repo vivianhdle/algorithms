@@ -67,3 +67,42 @@ var removeDuplicates = function(s) {
         }
     }
 };
+
+
+class Node {
+    constructor(value,children){
+        this.value = value;
+        this.children = children;
+    }
+}
+function maxLevelOfNodes(root){
+    debugger;
+    let maxLevel = 1;
+    let currentLevel = [root];
+    let max = 1;
+    let currentLevelNumber = 1;
+
+    while( currentLevel.length > 0 ){
+        currentLevelNumber++
+        let nextLevel = [];
+        let totalChildren = 0;
+        currentLevel.forEach(function (current,index){
+            if (current.children){
+                console.log(current.children);
+                nextLevel = nextLevel.concat(current.children);
+                totalChildren += current.children.length;
+            }
+        })
+        if (totalChildren > max){
+            max = totalChildren;
+            maxLevel = currentLevelNumber;
+        }
+        currentLevel = nextLevel;
+    }
+
+    return maxLevel;
+}
+
+const test = new Node(1,[new Node(2,[new Node(4),new Node(5),new Node(6)]),new Node(3)]);
+console.log(test);
+console.log(maxLevelOfNodes(test));
