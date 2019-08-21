@@ -88,7 +88,6 @@ function maxLevelOfNodes(root){
         let totalChildren = 0;
         currentLevel.forEach(function (current,index){
             if (current.children){
-                console.log(current.children);
                 nextLevel = nextLevel.concat(current.children);
                 totalChildren += current.children.length;
             }
@@ -106,3 +105,14 @@ function maxLevelOfNodes(root){
 const test = new Node(1,[new Node(2,[new Node(4),new Node(5),new Node(6)]),new Node(3)]);
 console.log(test);
 console.log(maxLevelOfNodes(test));
+
+const map = {};
+
+const duplicateTest = [{place:"New-York"},{place:'New-York'},{place:"New-Hork"}]
+
+duplicateTest.forEach((item)=>{
+    map[JSON.stringify(item)] = true;
+});
+for (keys in map){
+    console.log(JSON.stringify(keys));
+}
