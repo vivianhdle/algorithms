@@ -122,7 +122,7 @@ for (keys in map){
 }
 //=========================================================================================================================
 //=========================================================================================================================
-
+//function will return the first unique character's index if there is a unique character else will return -1
 var firstUniqChar = function(s) {
     let recordStr = '';
     for (let strInd=0; strInd < s.length; strInd++){
@@ -133,4 +133,36 @@ var firstUniqChar = function(s) {
         recordStr += currentLetter;
     }
     return -1; 
+};
+
+//=========================================================================================================================
+//=========================================================================================================================
+//function will find the longest possible palindrome possible
+var longestPalindrome = function(str) {
+    const map = {};
+    let count = 0;
+    let odd = false;
+    for (let strInd=0;strInd<str.length;strInd++){
+        let currentLetter = str[strInd];
+        if (map.hasOwnProperty(currentLetter)){
+            map[currentLetter]++
+        } else {
+            map[currentLetter] = 1;
+        }
+    }
+    for (let key in map){
+        if (map[key]%2 ===0){
+            count += map[key];
+        } else if(map[key]>2){
+            count += map[key]-1
+            if (!odd){
+                count++
+                odd=true;
+            }
+        } else if (!odd){
+            count++
+            odd=true;
+        }
+    }
+    return count;
 };
