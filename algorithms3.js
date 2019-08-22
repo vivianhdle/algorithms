@@ -68,7 +68,9 @@ var removeDuplicates = function(s) {
     }
 };
 
-
+//=========================================================================================================================
+//=========================================================================================================================
+//find the level with the most children
 class Node {
     constructor(value,children){
         this.value = value;
@@ -101,7 +103,9 @@ function maxLevelOfNodes(root){
 
     return maxLevel;
 }
-
+//=========================================================================================================================
+//=========================================================================================================================
+//Get rid of duplicate objects in an array
 const test = new Node(1,[new Node(2,[new Node(4),new Node(5),new Node(6)]),new Node(3)]);
 console.log(test);
 console.log(maxLevelOfNodes(test));
@@ -116,3 +120,17 @@ duplicateTest.forEach((item)=>{
 for (keys in map){
     console.log(JSON.stringify(keys));
 }
+//=========================================================================================================================
+//=========================================================================================================================
+
+var firstUniqChar = function(s) {
+    let recordStr = '';
+    for (let strInd=0; strInd < s.length; strInd++){
+        const currentLetter = s[strInd];
+        if (s.indexOf(currentLetter,strInd+1) === -1 && recordStr.indexOf(currentLetter) === -1){
+            return strInd
+        }
+        recordStr += currentLetter;
+    }
+    return -1; 
+};
